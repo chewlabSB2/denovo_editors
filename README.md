@@ -1,4 +1,4 @@
-Computational workflow for denovo editors
+![image](https://github.com/chewlabSB2/denovo_editors/assets/87451986/69b03f3b-3769-44ed-9d48-5f0f2af2530f)*Computational workflow for denovo editors*
 ![Picture1](https://github.com/chewlabSB2/denovo_editors/assets/87451986/d1ae18b8-23a2-45fe-bbe5-89fa0f2fb197)
 
 1. Clone the denovo_editors repository
@@ -20,13 +20,18 @@ nvcc --version
 #Cuda compilation tools, release 12.1, V12.1.105
 #Build cuda_12.1.r12.1/compiler.32688072_0
 ```
-
+If you want to view the full list of modules available in your HPC, as well as which modules you have currently loaded:
+```bash
+module avail
+module list
+```
 3. Installation instructions for RFdiffusion
 ```bash
 cd denovo_editors
 git clone https://github.com/RosettaCommons/RFdiffusion.git
 cd RFdiffusion
 mkdir models && cd models
+#install all required model weights
 wget http://files.ipd.uw.edu/pub/RFdiffusion/6f5902ac237024bdd0c176cb93063dc4/Base_ckpt.pt
 wget http://files.ipd.uw.edu/pub/RFdiffusion/e29311f6f1bf1af907f9ef9f44b8328b/Complex_base_ckpt.pt
 wget http://files.ipd.uw.edu/pub/RFdiffusion/60f09a193fb5e5ccdc4980417708dbab/Complex_Fold_base_ckpt.pt
@@ -36,9 +41,9 @@ wget http://files.ipd.uw.edu/pub/RFdiffusion/5532d2e1f3a4738decd58b19d633b3c3/Ac
 wget http://files.ipd.uw.edu/pub/RFdiffusion/12fc204edeae5b57713c5ad7dcb97d39/Base_epoch8_ckpt.pt
 wget http://files.ipd.uw.edu/pub/RFdiffusion/1befcb9b28e2f778f53d47f18b7597fa/RF_structure_prediction_weights.pt
 ```
-We also need to set up the Conda environment for RFdiffusion, which uses NVIDIA SE(3)-Transformers.
+We also need to set up the conda environment for RFdiffusion, which uses NVIDIA SE(3)-Transformers:
 ```bash
-#within the RFdiffusion subdirectory
+#within the RFdiffusion subdirectory:
 conda env create -f env/SE3nv.yml
 
 conda activate SE3nv
@@ -58,12 +63,11 @@ cd ..
 ```
 
 4. Installation instructions for MPNN
-
 ```bash
 git clone https://github.com/dauparas/ProteinMPNN
 cd ProteinMPNN
 ```
-We also need to create a conda environment to run MPNN with Pytorch. The latest PyTorch requires Python 3.8 or later so we also need to load the correct python version in our HPC. Here, we avoid using miniforge because it runs python 3.10 as default env, which is not compatible with Pytorch CUDA. Instead, we use mamba to create an environment with python3.9 and Pytorch with CUDA 12.1.1
+We also need to create a conda environment to run MPNN with Pytorch. The latest PyTorch requires Python 3.8 or later so we also need to load the correct python version in our HPC. Here, we avoid using miniforge because it runs python 3.10 as default env, which is not compatible with Pytorch CUDA platform. Instead, we use mamba to create an environment with python3.9 and Pytorch with CUDA 12.1.1
 ```bash
 module load cuda/12.1.1
 mamba create -n my_mlfold python=3.9
@@ -83,8 +87,26 @@ bash install_colabbatch_linux.sh
 mv localcolabfold local_alphafold
 export PATH="/path/to/your/local_alphafold/colabfold-conda/bin:$PATH" #It is recommended to add this export command to ~/.bashrc and restart bash (~/.bashrc will be executed every time bash is started)
 ```
+Now you have all the necessary repositories and scripts to run this workflow. 
 _________________________________________________________________________________________________________________
+*Instructions for running the workflow*
+Navigate to helper_scripts/template_scripts/ to copy the templates for each step.
+1. RFdiffusion
+```bash
+cd helper_scripts/template_scripts/
+cp RFdiffusion_bash.sh /home/users/astar/gis/"your_username"/scratch/denovo_editors/RFdiffusion_run1.sh #example
+nano RFdiffusion_run1.sh #Change runtime for job based on timesteps and number of designs to generate 
+```
+Edit and save the bash script according to your requirements in your scratch directory. To submit the job:
+```bash
+sbatch Rfdiffsuion_run1.sh
+```
 
-Instructions for running the workflow:
+You can monitor your job using the following commands:
+```bash
+squeue #view the entire queue
+squeue -u your_username #replace 'your_username', you will be able to view the status of all jobs you have submitted
+```
+
 
 
