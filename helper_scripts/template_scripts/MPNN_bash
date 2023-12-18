@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --job-name=run_name
+#SBATCH --gres=gpu:4
+#SBATCH -N 1
+#SBATCH --mem-per-gpu=21000M
+#SBATCH --time=01:00:00
+#SBATCH --output=%x-%j.out
+#SBATCH --error=%x-%j.err
+#SBATCH --partition=gpu4w
+source /home/users/astar/gis/diyasri/scratch/miniforge3/etc/profile.d/conda.sh
+mamba activate my_mlfold
+
+# Define the directory containing PDB files and the directory with JSON files
+pdb_dir="/home/users/astar/gis/your_username/scratch/denovo_editors/RFdiffusion/outputs/run_name"
+json_dir="$ ="/home/users/astar/gis/your_username/scratch/denovo_editors/ /denovo_editors/ProteinMPNN/outputs/run_name/"
+
+# Define the output directory
+output_dir="/home/users/astar/gis/diyasri/scratch/ProteinMPNN/outputs"
+
+# Change to the ProteinMPNN directory
+cd home/users/astar/gis/your_username/scratch/denovo_editors/ProteinMPNN
