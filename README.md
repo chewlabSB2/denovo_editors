@@ -43,6 +43,7 @@ wget http://files.ipd.uw.edu/pub/RFdiffusion/1befcb9b28e2f778f53d47f18b7597fa/RF
 We also need to set up the conda environment for RFdiffusion, which uses NVIDIA SE(3)-Transformers:
 ```bash
 #within the RFdiffusion subdirectory:
+cd ..
 conda env create -f env/SE3nv.yml
 
 conda activate SE3nv
