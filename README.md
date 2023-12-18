@@ -4,7 +4,6 @@
 1. Clone the denovo_editors repository
 ```bash
 cd scratch
-sudo apt -y install curl git wget
 git clone https://github.com/chewlabSB2/denovo_editors
 ```
 
