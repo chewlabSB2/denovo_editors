@@ -1,4 +1,4 @@
-![image](https://github.com/chewlabSB2/denovo_editors/assets/87451986/69b03f3b-3769-44ed-9d48-5f0f2af2530f)*Computational workflow for denovo editors*
+*Computational workflow for denovo editors*
 ![Picture1](https://github.com/chewlabSB2/denovo_editors/assets/87451986/d1ae18b8-23a2-45fe-bbe5-89fa0f2fb197)
 
 1. Clone the denovo_editors repository
