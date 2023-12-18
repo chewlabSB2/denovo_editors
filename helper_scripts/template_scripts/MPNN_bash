@@ -19,3 +19,28 @@ output_dir="/home/users/astar/gis/diyasri/scratch/ProteinMPNN/outputs"
 
 # Change to the ProteinMPNN directory
 cd home/users/astar/gis/your_username/scratch/denovo_editors/ProteinMPNN
+
+# Loop through each PDB file in the pdb_dir
+for pdb_file in ${pdb_dir}/*.pdb; do
+    # Extract the base name of the PDB file
+    base_name=$(basename ${pdb_file} .pdb)
+
+    # Construct the JSON file path
+    json_file="${json_dir}/${base_name}_fixed_residues.json"
+
+    # Check if the JSON file exists
+    if [[ -f "${json_file}" ]]; then
+        # Run the ProteinMPNN command
+        python protein_mpnn_run.py \
+            --pdb_path "${pdb_file}" \
+            --fixed_positions_jsonl "${json_file}" \
+            --out_folder "${output_dir}" \
+            --num_seq_per_target 2 \
+            --sampling_temp "0.1" \
+            --seed 37 \
+            --batch_size 1
+    else
+        echo "No matching JSON file found for ${pdb_file}"
+    fi
+done  # This 'done' statement closes the for loop
+
