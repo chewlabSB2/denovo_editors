@@ -1,11 +1,16 @@
 *Computational workflow for denovo editors*
 ![Picture1](https://github.com/chewlabSB2/denovo_editors/assets/87451986/d1ae18b8-23a2-45fe-bbe5-89fa0f2fb197)
 
-1. Clone the denovo_editors repository
+1. Clone the denovo_editors repository 
 ```bash
 cd scratch
 git clone https://github.com/chewlabSB2/denovo_editors
 ```
+** Before we proceed, make sure you have conda working. If you want to install Miniforge in your HPC with the latest architecture, go to https://github.com/conda-forge/miniforge and install Miniforge-pypy3-Linux-x86_64 (Linux OS, x86_64 (amd64) architecture). To run install the package:
+```bash
+bash Miniforge3-Linux-x86_64.sh  
+```
+After you have installed Miniforge, re-initialize the terminal or open a new session. 
 
 2. CUDA compiler
 
