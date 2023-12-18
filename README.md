@@ -77,7 +77,7 @@ We also need to create a conda environment to run MPNN with Pytorch. The latest 
 module load cuda/12.1.1
 mamba create -n my_mlfold python=3.9
 mamba activate my_mlfold
-pip3 install torch torchvision torchaudio
+pip3 install torch torchvision torchaudio #confirm it worked
 ```
 Navigate back to the denovo editors directory to continue setting up.
 ```bash
@@ -88,7 +88,7 @@ cd ..
 ```bash
 module load cuda/12.1.1
 module load cudnn/8.9.2_cu12
-bash install_colabbatch_linux.sh
+bash install_colabbatch_linux.sh #need to re-upload the bash script to github, ignore initial forzen resolve
 mv localcolabfold local_alphafold
 export PATH="/path/to/your/local_alphafold/colabfold-conda/bin:$PATH" #It is recommended to add this export command to ~/.bashrc and restart bash (~/.bashrc will be executed every time bash is started)
 ```
