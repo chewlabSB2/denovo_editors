@@ -1,7 +1,8 @@
-***Computational workflow for denovo editors***
+****Computational workflow for denovo editors****
 ![Picture1](https://github.com/chewlabSB2/denovo_editors/assets/87451986/d1ae18b8-23a2-45fe-bbe5-89fa0f2fb197)
 _________________________________________________________________________________________________________________
 *Instructions for updating your repository*
+
 Navigate to your local repository's directory and pull the latest changes:
 ```bash
 cd path/to/denovo_editors
