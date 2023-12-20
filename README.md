@@ -1,7 +1,15 @@
-*Computational workflow for denovo editors*
+***Computational workflow for denovo editors***
 ![Picture1](https://github.com/chewlabSB2/denovo_editors/assets/87451986/d1ae18b8-23a2-45fe-bbe5-89fa0f2fb197)
-
-1. Clone the denovo_editors repository 
+_________________________________________________________________________________________________________________
+*Instructions for updating your repository*
+Navigate to your local repository's directory and pull the latest changes:
+```bash
+cd path/to/denovo_editors
+git pull origin main
+```
+_________________________________________________________________________________________________________________
+**Instructions for setup**
+*1. Clone the denovo_editors repository* 
 ```bash
 cd scratch
 git clone https://github.com/chewlabSB2/denovo_editors
@@ -12,7 +20,7 @@ bash Miniforge3-Linux-x86_64.sh
 ```
 After you have installed Miniforge, re-initialize the terminal or open a new session. 
 
-2. CUDA compiler
+*2. CUDA compiler*
 
 Make sure your Cuda compiler driver is 11.1 or later. If you don't have a GPU or don't plan to use a GPU, you can skip this section. if you are running this on HPC with a pre-loaded toolkit, you have to load the module. You can also use CUDA 11.8 or CUDA 12.1.1. 
 ```bash
@@ -29,7 +37,7 @@ If you want to view the full list of modules available in your HPC, as well as w
 module avail
 module list
 ```
-3. Installation instructions for RFdiffusion
+*3. Installation instructions for RFdiffusion*
 ```bash
 cd denovo_editors
 git clone https://github.com/RosettaCommons/RFdiffusion.git
@@ -69,13 +77,11 @@ mkdir outputs
 mkdir inputs
 cd inputs
 ```
-
 Navigate back to the denovo editors directory to continue setting up.
 ```bash
 cd ..
 ```
-
-4. Installation instructions for MPNN
+*4. Installation instructions for MPNN*
 ```bash
 git clone https://github.com/dauparas/ProteinMPNN
 cd ProteinMPNN
@@ -92,7 +98,7 @@ Navigate back to the denovo editors directory to continue setting up.
 mamba deactivate #to deactivate the environment
 cd ..
 ```
-5.  Installation Instructions for Local AlphaFold
+*5.  Installation Instructions for Local AlphaFold*
 
 ```bash
 module load cuda/12.1.1
@@ -102,7 +108,7 @@ export PATH="/path/to/your/local_alphafold/colabfold-conda/bin:$PATH" #It is rec
 ```
 Now you have all the necessary repositories and scripts to run this workflow. 
 _________________________________________________________________________________________________________________
-*Instructions for running the workflow*
+***Instructions for running the workflow***
 Prepare your engineered pdb and your reference pdb files before you begin this workflow. This example workflow will use Icsb(8csz.pdb) and a modified pdb file (IscB_8CSZ_5A.pdb):
 
 **Step 1: Import your engineered pdb and reference pdb files into /denovo_editors/RFdiffusion/inputs**
