@@ -145,7 +145,7 @@ cd helper_scripts/template_scripts/
 cp RFdiffusion_bash.sh /home/users/astar/gis/"your_username"/scratch/denovo_editors/RFdiffusion_run1.sh #example
 nano RFdiffusion_run1.sh
 ```
-When you edit the RFdiffusion command at the end of the script, 
+To view the example RFdiffusion bash script, refer to the example folder.
 Edit and save the bash script according to your requirements in your scratch directory. To submit the job:
 ```bash
 sbatch Rfdiffusion_run1.sh
