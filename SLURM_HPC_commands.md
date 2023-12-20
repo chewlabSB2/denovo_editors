@@ -5,7 +5,6 @@ ssh username@hpc-server.com #Connect to the HPC server via SSH. Replace username
 
 exit #Log out of the HPC server.
 
-
 pwd #Print the current working directory path.
 
 scp local_file username@hpc-server.com:path/to/destination #Securely copy a file from your local machine to the HPC server.
