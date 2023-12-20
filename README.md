@@ -114,7 +114,9 @@ ________________________________________________________________________________
 Prepare your engineered pdb and your reference pdb files before you begin this workflow. This example workflow will use Icsb(8csz.pdb) and a modified pdb file (IscB_8CSZ_5A.pdb):
 
 **Step 1: Import your engineered pdb and reference pdb files into /denovo_editors/RFdiffusion/inputs**
+
 **Step 2: Extract residues for RFdiffusion input**
+
 You need to extract the residues from the modified pdb file. Navigate to /denovo_editors/helper_scripts. In order to extract the input residues for contigmap.contigs and range for contigmap.length:
 ```bash
 nano extract_input_residues.py
