@@ -3,10 +3,9 @@ Here's a list of general commands for navigating a High-Performance Computing (H
 ```bash
 ssh username@hpc-server.com #Connect to the HPC server via SSH. Replace username with your HPC username and hpc-server.com with the address of your HPC server.
 
-
 exit #Log out of the HPC server.
-pwd #Print the current working directory path.
 
+pwd #Print the current working directory path.
 
 scp local_file username@hpc-server.com:path/to/destination #Securely copy a file from your local machine to the HPC server.
 
