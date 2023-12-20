@@ -9,6 +9,7 @@ git pull origin main
 ```
 _________________________________________________________________________________________________________________
 **Instructions for setup**
+
 *1. Clone the denovo_editors repository* 
 ```bash
 cd scratch
@@ -109,6 +110,7 @@ export PATH="/path/to/your/local_alphafold/colabfold-conda/bin:$PATH" #It is rec
 Now you have all the necessary repositories and scripts to run this workflow. 
 _________________________________________________________________________________________________________________
 ***Instructions for running the workflow***
+
 Prepare your engineered pdb and your reference pdb files before you begin this workflow. This example workflow will use Icsb(8csz.pdb) and a modified pdb file (IscB_8CSZ_5A.pdb):
 
 **Step 1: Import your engineered pdb and reference pdb files into /denovo_editors/RFdiffusion/inputs**
