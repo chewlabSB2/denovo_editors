@@ -1,4 +1,4 @@
-Here's a list of general commands for navigating a High-Performance Computing (HPC) environment and using a SLURM scheduler, with explanations for each command:
+List of general commands for navigating a High-Performance Computing (HPC) environment and using a SLURM scheduler, with explanations for each command:
 
 ```bash
 ssh username@hpc-server.com #Connect to the HPC server via SSH. Replace username with your HPC username and hpc-server.com with the address of your HPC server.
@@ -27,9 +27,13 @@ scancel job_id #Cancel a queued or running job. Replace job_id with the ID of th
 
 sinfo #View information about SLURM nodes and partitions.
 
+sinfo -p partition_name #Display detailed information about a specific partition. Replace partition_name with the name of the partition you're interested in (ex. gpu4w or gpu8w).
+
 sacct #Display accounting data for all jobs you have submitted.
 
 sstat job_id #Display status information about a running job.
+
+scontrol show partition #Show detailed information about all partitions, including their configurations, such as default time limit, maximum number of nodes, state, etc.
 
 salloc #Request a SLURM job allocation (i.e., a block of resources).
 
