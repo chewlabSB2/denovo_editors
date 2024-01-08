@@ -137,7 +137,7 @@ python extract_input_residues.py
 ```
 The extracted residues to input in the RFdiffusion bash script should print in your terminal as shown above.
 
-**Step 3: Run RFdiffusion**
+**Step 3: Running RFdiffusion**
 Navigate to 'helper_scripts/template_scripts/' to copy the templates for each step.
 1. RFdiffusion
 ```bash
@@ -155,6 +155,21 @@ You can monitor your job using the following commands:
 squeue #view the entire queue
 squeue -u your_username #replace 'your_username', you will be able to view the status of all jobs you have submitted
 ```
+When your submitted job is running, the status will change from "PD" to "R". Once the job completes, it will no longer show in queue and output files should be in the specified output directory. If the run fails, you will see ".err" and ".out" log files in the same directory in which you submitted the bash script. 
+
+**Step 4: Prep for MPNN**
+
+
+**Step 5: running MPNN**
+
+
+**Step 6: Prep for Alphafold**
+
+
+**Step 7: Running Alphafold**
+
+
+**Step 8: extracting your results and output files**
 
 
 
