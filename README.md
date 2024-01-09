@@ -158,7 +158,8 @@ squeue -u your_username #replace 'your_username', you will be able to view the s
 When your submitted job is running, the status will change from "PD" to "R". Once the job completes, it will no longer show in queue and output files should be in the specified output directory. If the run fails, you will see ".err" and ".out" log files in the same directory in which you submitted the bash script. 
 
 **Step 4: Prep for MPNN**
-Navigate to 'denovo_editors/helper_scripts/'. You need to open and edit trb2json.py, which is used to  prepare the pdb and trb files for MPNN in JSON format. To learn more about how this script works, refer to 'denovo_Editors/helper_scripts/trb2json_explained.txt'. You need to edit this script so that when executed, it pulls files from the correct RFdiffsuion output subdirectory:
+
+Navigate to 'denovo_editors/helper_scripts/'. You need to open and edit trb2json.py, which is used to prepare the pdb and trb files for MPNN in JSON format. To learn more about how this script works, refer to 'denovo_editors/helper_scripts/trb2json_explained.txt'. You need to edit this script so that when executed, it pulls files from the correct RFdiffusion output subdirectory:
 ```bash
 # change the directory containing PDB and TRB files
 directory = '/home/users/astar/gis/your_username/scratch/RFdiffusion/outputs/'
@@ -169,8 +170,9 @@ python trb2json.py
 The script creates files containing JSON objects with residues from each respective design, along with a corresponding file. All of the outputted files should be saved to '/denovo_editors/ProteinMPNN/inputs/run_name/'.
 
 **Step 5: running MPNN**
+
 Navigate to 'helper_scripts/template_scripts/' to copy the MPNN template and create your bash script.
-1. RFdiffusion
+
 ```bash
 cd helper_scripts/template_scripts/
 cp MPNN_bash.sh /home/users/astar/gis/"your_username"/scratch/denovo_editors/MPNN_run1.sh #example
@@ -186,13 +188,16 @@ sbatch MPNN_run1.sh
 MPNN will output fasta files for every design, and the number of sequences per design is a paramater that can be determined by you. The files are saved to '/denovo_editors/ProteinMPNN/outputs/run_name/'.
 
 **Step 6: Alphafold**
+
 Navigate to /home/users/astar/gis/diyasri/scratch/denovo_editors/helper_scripts/template_scripts/' to copy the alphafold template and create your bash script:
+
 ```bash
 cd helper_scripts/template_scripts/
 cp Alphafold_bash.sh /home/users/astar/gis/"your_username"/scratch/denovo_editors/Alphafold_run1.sh #example
 nano Alphafold_run1.sh
 ```
-Keep in mind when you edit this script, alphafold typically requires a longer runtime. It is recommended to set '#SBATCH --time' to at least: 04:00:00 to prevent the job reaching a time limit without producing some output pdb files. Certain paramters have been set for optimal design of conditional proteins (batch --num-recycle 3 --amber --max-msa 64:128 --num-seeds 1) but you may change them if you wish to.  To submit the job:
+Keep in mind when you edit this script, alphafold typically requires a longer runtime. It is recommended to set '#SBATCH --time' to at least: 04:00:00 to prevent the job reaching a time limit without producing some output pdb files. Certain paramters have been set for optimal design of conditional proteins (batch --num-recycle 3 --amber --max-msa 64:128 --num-seeds 1) but you may change them if you wish to. To submit the job:
+
 ```bash
 sbatch Alphafold_run1.sh
 ```
@@ -201,7 +206,7 @@ If there are no issues, the output files will be saved to output directly in rea
 
 **Step 7: extracting your results and output files**
 
-After the predicted pdb files are created, the next step is to visualize them and validate them. Visualization can be done using softwares such as Pymol and ChimeraX. To extract information on the outputs, including the pLDDT scores for each design generated, navigate to '/denovo_editors/helper_scripts' and edit extract2csv.py. This script compiles information on the model outputs from Alphafold. This is useful if you have geenrated many designs and you wish to rank them and review the feasability of your predicted designs. 
+After the predicted pdb files are created, the next step is to visualize them and validate them. Visualization can be done using softwares such as Pymol and ChimeraX. To extract information on the outputs, including the pLDDT scores for each design generated, navigate to '/denovo_editors/helper_scripts' and edit extract2csv.py. This script compiles information on the model outputs from Alphafold. This is useful if you have generated many designs and you wish to rank them and review the feasability of your predicted designs. 
 ```bash
 nano extract2csv.py
 #make sure the script compiles information from the correct subdirectory containing all outputs fromm alphafold. Edit lines 5 & 6:
