@@ -8,6 +8,10 @@
 #SBATCH --error=%x-%j.err
 #SBATCH --partition=gpu4w
 
+#load required modules
+module load cuda/12.1.1
+module load cudnn/8.9.2_cu12
+
 # Add the path to local_alphafold_batch to PATH
-export PATH=$PATH:/charonfs/scratch/users/astar/gis/your_username/local_alphafold /colabfold-conda/bin
+export PATH=$PATH:/charonfs/scratch/users/astar/gis/your_username/scratch/denovo_editors/local_alphafold /colabfold-conda/bin
 /charonfs/scratch/users/astar/gis/your_username/local_alphafold/colabfold-conda/bin/colabfold_batch --num-recycle 3 --amber --max-msa 64:128 --num-seeds 1 /home/users/astar/gis/your_username/scratch/denovo_editors/ProteinMPNN/outputs/ /home/users/astar/gis/ your_username/scratch/denovo_editors / local_alphafold /outputs/run_name/
