@@ -7,15 +7,21 @@
 #SBATCH --output=%x-%j.out
 #SBATCH --error=%x-%j.err
 #SBATCH --partition=gpu4w
+
+module load cuda/12.1 #load CUDA
+
 source /home/users/astar/gis/diyasri/scratch/miniforge3/etc/profile.d/conda.sh
 mamba activate my_mlfold
 
+# Set PYTHONPATH to include the MPNN directory
+export PYTHONPATH="${PYTHONPATH}:/home/users/astar/gis/your_username/scratch/denovo_editors/ProteinMPNN"
+
 # Define the directory containing PDB files and the directory with JSON files
 pdb_dir="/home/users/astar/gis/your_username/scratch/denovo_editors/RFdiffusion/outputs/run_name"
-json_dir="$ ="/home/users/astar/gis/your_username/scratch/denovo_editors/ /denovo_editors/ProteinMPNN/outputs/run_name/"
+json_dir="$ ="/home/users/astar/gis/your_username/scratch/denovo_editors/ /denovo_editors/ProteinMPNN/outputs/run_name/" #remember to change your_username and run_name
 
 # Define the output directory
-output_dir="/home/users/astar/gis/diyasri/scratch/ProteinMPNN/outputs"
+output_dir="/home/users/astar/gis/your_username/scratch/ProteinMPNN/outputs"
 
 # Change to the ProteinMPNN directory
 cd home/users/astar/gis/your_username/scratch/denovo_editors/ProteinMPNN
