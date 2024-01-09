@@ -4,7 +4,7 @@ import os
 import json
 
 # Directory containing PDB and TRB files
-directory = '/home/users/astar/gis/diyasri/scratch/RFdiffusion/8CSZ_charon/run6'
+directory = '/home/users/astar/gis/your_username/scratch/RFdiffusion/outputs/run_1'
 json_directory = os.path.join(directory, 'json_residues')
 
 # Create json_residues directory if it doesn't exist
