@@ -146,7 +146,7 @@ cp RFdiffusion_bash.sh /home/users/astar/gis/"your_username"/scratch/denovo_edit
 nano RFdiffusion_run1.sh
 ```
 To view the example RFdiffusion bash script, refer to the example folder.
-Edit and save the bash script according to your requirements in your scratch directory. To submit the job:
+Edit and save the bash script according to your requirements in your denovo_editors directory. To submit the job:
 ```bash
 sbatch Rfdiffusion_run1.sh
 ```
@@ -158,7 +158,7 @@ squeue -u your_username #replace 'your_username', you will be able to view the s
 When your submitted job is running, the status will change from "PD" to "R". Once the job completes, it will no longer show in queue and output files should be in the specified output directory. If the run fails, you will see ".err" and ".out" log files in the same directory in which you submitted the bash script. 
 
 **Step 4: Prep for MPNN**
-
+Navigate to 'helper_scripts/template_scripts/'
 
 **Step 5: running MPNN**
 
