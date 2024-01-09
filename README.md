@@ -22,13 +22,17 @@ git clone https://github.com/chewlabSB2/denovo_editors
 ```
 ** Before we proceed, make sure you have conda working. If you want to install Miniforge in your HPC with the latest architecture, go to https://github.com/conda-forge/miniforge and install Miniforge-pypy3-Linux-x86_64 (Linux OS, x86_64 (amd64) architecture). To run install the package:
 ```bash
-bash Miniforge3-Linux-x86_64.sh  
+bash Miniforge3-Linux-x86_64.sh
+./Miniforge3-Linux-x86_64.sh #to run the installer
+#you must set the location for creation of the miniforge3 directory:
+/home/users/astar/gis/your_username/scratch/denovo_editors/miniforge3
+#if this path above is not yours, make sure to edit the miniforge3 paths in the template bash scripts to make them uniform and match your actual path.
 ```
 After you have installed Miniforge, re-initialize the terminal or open a new session. 
 
 *2. CUDA compiler*
 
-Make sure your Cuda compiler driver is 11.1 or later. If you don't have a GPU or don't plan to use a GPU, you can skip this section. if you are running this on HPC with a pre-loaded toolkit, you have to load the module. You can also use CUDA 11.8 or CUDA 12.1.1. 
+Make sure your Cuda compiler driver is 11.1 or later. If you don't have a GPU or don't plan to use a GPU, you can skip this section. if you are running this on HPC with a pre-loaded toolkit, you have to load the module. It is preferable to use the latest available version, in this case that is CUDA 12.1.1. 
 ```bash
 module load cuda/12.1.1
 nvcc --version
@@ -155,19 +159,19 @@ You can monitor your job using the following commands:
 squeue #view the entire queue
 squeue -u your_username #replace 'your_username', you will be able to view the status of all jobs you have submitted
 ```
-When your submitted job is running, the status will change from "PD" to "R". Once the job completes, it will no longer show in queue and output files should be in the specified output directory. If the run fails, you will see ".err" and ".out" log files in the same directory in which you submitted the bash script. 
+When your submitted job is running, the status will change from "PD" to "R". Once the job completes, it will no longer show in queue and output files should be in the specified output directory. If the run fails, you will see ".err" and ".out" log files in the same directory in which you submitted the bash script. The output of RFdiffusion consists of pdb files that correspond with the total number of designs specified in the RFdiffusion bash script. Each pdb file has a corresponding trb file, and both file types are outputted into the same output directory specified in the bash script as well. 
 
 **Step 4: Prep for MPNN**
 
 Navigate to 'denovo_editors/helper_scripts/'. You need to open and edit trb2json.py, which is used to prepare the pdb and trb files for MPNN in JSON format. To learn more about how this script works, refer to 'denovo_editors/helper_scripts/trb2json_explained.txt'. You need to edit this script so that when executed, it pulls files from the correct RFdiffusion output subdirectory:
 ```bash
-# change the directory containing PDB and TRB files
-directory = '/home/users/astar/gis/your_username/scratch/RFdiffusion/outputs/'
+# change the directory containing PDB and TRB files in lines 6 & 7
+directory = '/home/users/astar/gis/your_username/scratch/RFdiffusion/outputs/run_1' #assuming that your RFdiffusion outputs were saved to "=outputs/run_1"
 json_directory = os.path.join(directory, 'json_residues')
 # save changes to the script. Then run it:
 python trb2json.py
 ```
-The script creates files containing JSON objects with residues from each respective design, along with a corresponding file. All of the outputted files should be saved to '/denovo_editors/ProteinMPNN/inputs/run_name/'.
+The script creates files containing JSON objects with residues from each respective design, along with a corresponding file. All of the outputted files should be saved to '/denovo_editors/ProteinMPNN/inputs/run_name/' (here, 'run_name' is replaced with 'run_1/').
 
 **Step 5: running MPNN**
 
